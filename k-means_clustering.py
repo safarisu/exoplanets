@@ -40,8 +40,10 @@ for k in range(1, 11):
         score = silhouette_score(scaled_features, kmeans.labels_)
         silhouette_coefficients.append(score)
 
+figsize = [10.24, 7.68]
+
 # Wyniki dla metody Silhoutte Coefficient
-plt.figure(figsize=[10.24, 7.68])
+plt.figure(figsize=figsize)
 plt.plot(range(2, 11), silhouette_coefficients)
 plt.xticks(range(2, 11))
 plt.title("Silhoutte Coefficient")
@@ -51,7 +53,7 @@ plt.grid(alpha=0.3)
 plt.show()
 
 # Wyniki dla metody Elbow Method
-plt.figure(figsize=[10.24, 7.68])
+plt.figure(figsize=figsize)
 plt.plot(range(1, 11), sse)
 plt.xticks(range(1, 11))
 plt.title("Elbow Method")
@@ -63,7 +65,7 @@ plt.show()
 # Dla każdego k w cluster_nos narysuj wykres
 for k in cluster_nos:
     k_labels = cluster_labels[cluster_nos.index(k)]
-    plt.figure(figsize=[10.24, 7.68])
+    plt.figure(figsize=figsize)
     sc = plt.scatter(features["pl_rade"], features["pl_bmasse"], c=k_labels, cmap="plasma", s=20, alpha=0.4)
     plt.legend(*sc.legend_elements(), title='Klastry', loc="lower right")
     plt.title(f"Analiza skupień dla n={k}")
