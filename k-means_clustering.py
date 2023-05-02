@@ -10,14 +10,13 @@ from IPython.display import display
 
 df = pd.read_csv("exoplanets_dataset.csv", skiprows=(range(46)))
 
-features = df.loc[:, ["pl_rade", "pl_bmasse", "pl_eqt"]]
+features = df.loc[:, ["pl_rade", "pl_bmasse"]]
 
 # Usuwanie outlierów
 mass_cutoff = 4131.4  # powyżej 4131.4 mas Ziemi -> brązowe karły
 radius_cutoff = 24.66 # 24.66 -> promień obiektu CT Cha b
 
 features = features.loc[(features['pl_bmasse'] < mass_cutoff) & (features['pl_rade'] < radius_cutoff)]
-features.dropna(inplace=True)
 print(len(features))
 
 # Skalowanie
@@ -93,7 +92,7 @@ plt.show()
 for k in cluster_nos:
     k_labels = cluster_labels[cluster_nos.index(k)]
     plt.figure(figsize=figsize)
-    sc = plt.scatter(features["pl_eqt"], features["pl_rade"], c=k_labels, cmap="plasma", s=20, alpha=0.4)
+    sc = plt.scatter(features["pl_rade"], features["pl_bmasse"], c=k_labels, cmap="plasma", s=20, alpha=0.4)
     plt.legend(*sc.legend_elements(), title='Klastry', loc="lower right")
     plt.title(f"Analiza skupień k-średnich dla n={k}")
     plt.xlabel("Promień [Promień Ziemi]")
@@ -103,7 +102,7 @@ for k in cluster_nos:
     plt.tight_layout()
     scatter_colors = sc.to_rgba(k_labels)
 
-    # Adnotacje planet - UWAGA może lagować
+    # Adnotacje planet - uwaga mogą lagować
     # features_annotated = df.loc[:, ["pl_name", "pl_rade", "pl_bmasse"]]
     # for x in range(len(features_annotated)):
     #     plt.annotate(text=features_annotated.loc[x].at["pl_name"],
