@@ -1,2 +1,2 @@
-# Exoplanets
-Exoplanets clustering project for Methods of Data Analysis class on uni. 
+# Exoplanets clustering
+Python scripts for a Methods of Data Analysis class on uni. 
