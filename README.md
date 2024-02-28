@@ -1,6 +1,8 @@
 # Exoplanets Data Analysis
 Clustering exoplanets based on their physical characteristics(radius, mass).
 
+Data source: https://exoplanetarchive.ipac.caltech.edu/
+
 ## K-means Clustering
 ### Results for k=3
 ![image](https://github.com/safarisu/exoplanets/assets/131063962/7fdd02cc-52c0-4506-a76d-0df375ab46b6)
